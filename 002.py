@@ -1,15 +1,12 @@
 def main():
-    first = 1
-    second = 1
-    third = first + second
-    total = 0
-    while third < 4000000:
+    first, second, third, sum, max = 1, 1, 0, 0, 4000000
+    while third < max:
         third = first + second
-        if third % 2 == 0:
-            total += third
+        if third % 2 == 0 and third < max:
+            sum += third
         first = second
         second = third
-    print(total)
+    print(sum)
 
 if __name__ == "__main__":
     main()

@@ -1,19 +1,11 @@
-from math import floor, ceil, sqrt
-
-def isPerfectSquare(n) -> bool:
-    if floor(sqrt(n)) == ceil(sqrt(n)):
-        return True
-    return False
-
 def main():
-    for a in range(1,1000):
-        for b in range(a + 1, 1001):
-            c2 = a ** 2 + b ** 2
-            if isPerfectSquare(c2):
-                c = int(sqrt(c2))
-                if a + b + c == 1000:
-                    print(a, b, c)
-                    print(a * b * c)
+    for a in range(998):
+        for b in range(a + 1, 999):
+            for c in range(b + 1, 1000):
+                if a ** 2 + b ** 2 == c ** 2 and a + b + c == 1000:
+                    print(a, "*", b, "*", c, "=", a * b * c)
+                    return
+    
 
 if __name__ == "__main__":
     main()

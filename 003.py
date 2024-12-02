@@ -1,36 +1,31 @@
-import time # to get execution time
-from math import sqrt
+# source: https://stackoverflow.com/questions/15347174/python-finding-prime-factors
 
-def is_prime(n) -> bool:
-    if n < 2:
-        return False
-    if n % 2 == 0 or n % 3 == 0 or n % 5 == 0:
-        return n == 2 or n == 3 or n == 5
-    maxP = int(sqrt(n)) + 1
-    for d in range(5, maxP):
-        if n % d == 0 or n % (d + 2) == 0:
-            return False
-    return True
+def largest_prime_factor(n):
+    i = 2
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+    return n
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
 
 def main():
-    start_time = time.time()
-    bigNumber = 600851475143
-    ceil = int(sqrt(bigNumber)) + 1
-    primes = []
-    biggestPrime = 2
-    for n in range(ceil):
-        if is_prime(n):
-            primes.append(n)
-    for d in primes:
-        if bigNumber % d == 0 and d > biggestPrime:
-            biggestPrime = d
-            dividend = bigNumber / d
-            if is_prime(dividend) and dividend > biggestPrime:
-                biggestPrime = dividend
-    print(biggestPrime)
-    end_time = time.time()
-    diff_time = round(end_time - start_time, 3)
-    print(f"finished in {diff_time} seconds.")
+    N = 600851475143
+    print(largest_prime_factor(N))
+    print(prime_factors(N))
 
 if __name__ == "__main__":
     main()

@@ -7,7 +7,7 @@ def is_prime(n) -> bool:
     if n % 2 == 0 or n % 3 == 0 or n % 5 == 0:
         return n == 2 or n == 3 or n == 5
     maxP = int(sqrt(n)) + 1
-    for d in range(5, maxP):
+    for d in range(5, maxP, 6):
         if n % d == 0 or n % (d + 2) == 0:
             return False
     return True
