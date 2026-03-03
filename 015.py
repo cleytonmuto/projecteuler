@@ -1,3 +1,5 @@
+from math import factorial
+
 def main():
     N = 21
     matrix = matrix = [ [ 0 for i in range(N) ] for j in range(N) ]
@@ -8,6 +10,7 @@ def main():
         for j in range(1,N):
             matrix[i][j] = matrix[i][j - 1] + matrix[i - 1][j]
     print(matrix[N - 1][ N - 1])
+    print(factorial(40) // (factorial(20) * factorial(20)))
 
 if __name__ == "__main__":
     main()
